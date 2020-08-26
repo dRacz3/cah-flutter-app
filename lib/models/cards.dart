@@ -1,22 +1,31 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class WhiteCard {
+class GameCard {
   final String id;
   final String text;
   final String deck;
   final String icon;
 
-  WhiteCard({this.id, this.text, this.deck, this.icon});
+  GameCard({this.id, this.text, this.deck, this.icon});
 }
 
-class BlackCard {
-  final String id;
-  final String text;
-  final String deck;
-  final int pick;
+class WhiteCard extends GameCard {
+  WhiteCard({String id, String text, String deck, String icon})
+      : super(id: id, text: text, deck: deck, icon: icon);
+}
 
-  BlackCard({this.id, this.text, this.deck, this.pick});
+class BlackCard extends GameCard {
+  int pick;
+
+  String get displayedText {
+    return this.text.replaceAll('_', '_______');
+  }
+
+  BlackCard({String id, String text, String deck, String icon, int pick})
+      : super(id: id, text: text, deck: deck, icon: icon) {
+    this.pick = pick;
+  }
 }
 
 IconData getCardIcon(String icon) {

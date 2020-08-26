@@ -1,6 +1,6 @@
-import 'package:cah_apk/data/dummy_card_data.dart';
-import 'package:cah_apk/screens/CardsView.dart';
 import 'package:flutter/material.dart';
+
+import 'screens/tab_screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       routes: {
-        '/': (ctx) => CardsViewScreen(WHITE_CARDS),
+        '/': (ctx) => TabsScreen(),
       },
     );
   }
