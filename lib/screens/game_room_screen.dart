@@ -21,7 +21,7 @@ class _GameRoomScreenState extends State<GameRoomScreen> {
       channel.stream.listen((event) {
         print(event);
         setState(() {
-          messages = "$messages\n$event";
+          messages = "$event";
         });
       });
     });
