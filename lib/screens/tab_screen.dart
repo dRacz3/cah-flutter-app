@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:cah_apk/providers/WhiteCardProvider.dart';
+import 'package:cah_apk/screens/game_room_screen.dart';
 import 'package:http/http.dart' as http;
 import 'package:cah_apk/models/cards.dart';
 import 'package:provider/provider.dart';
@@ -32,7 +33,8 @@ class _TabsScreenState extends State<TabsScreen> {
   void initState() {
     _pages = [
       {'page': WhiteCardsViewScreen(), 'title': Text('White')},
-      {'page': BlackCardsViewScreen(), 'title': Text('Black')}
+      {'page': BlackCardsViewScreen(), 'title': Text('Black')},
+      {'page': GameRoomScreen(), 'title': Text('Game Room')}
     ];
 
     whiteCards = WhiteCardListProvider();
@@ -64,11 +66,18 @@ class _TabsScreenState extends State<TabsScreen> {
               icon: Icon(Icons.category),
               title: Text('Black'),
             ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.airplay),
+              title: Text('Black'),
+            ),
           ],
         ),
         floatingActionButton: FloatingActionButton(
           child: Icon(Icons.refresh),
           onPressed: () {
+            // http
+            // .get("http://localhost:8000/api/whitecards/draw/5")
+            // .then((resp) {
             http.get("http://10.0.2.2:8000/api/whitecards/draw/5").then((resp) {
               if (resp.statusCode == 200) {
                 var data = jsonDecode(resp.body) as List<dynamic>;
